@@ -1,0 +1,44 @@
+
+
+header {
+
+  @include outer-container;
+
+  background: rgba(35, 105, 105, 1);
+
+  a, h1 {
+
+    padding: 20px;
+
+    &, &:active, &:visited {
+
+      color: white;
+
+    }
+
+  }
+
+  a {
+
+    float: left;
+    background: rgba(13, 77, 77, 1);
+
+    &:hover {
+
+      color: rgba(102, 153, 153, 1);
+
+    }
+
+  }
+
+  h1 {
+
+    float: right;
+    margin: 0;
+    font-size: 20px;
+    font-weight: 200;
+    letter-spacing: 1px;
+
+  }
+
+}
