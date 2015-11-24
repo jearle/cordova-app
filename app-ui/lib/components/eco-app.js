@@ -10,7 +10,11 @@ import './eco-main';
 const template = `
 
   <eco-header></eco-header>
-  <eco-main navigation="navigation"></eco-main>
+
+  <eco-main 
+    navigation="navigation"
+    people="people"
+    schema="schema"></eco-main>
 
 `;
 
@@ -29,6 +33,8 @@ export default (store) =>
           link ($scope) {
 
             $scope.navigation = store.navigation;
+            $scope.people = store.people;
+            $scope.schema = store.schema.people;
 
           }
 

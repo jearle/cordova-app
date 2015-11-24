@@ -11,13 +11,16 @@ const template = `
 
   <main>
 
-    <eco-nav navigation="navigation"></eco-nav>  
+    <eco-nav 
+      navigation="navigation"></eco-nav>
+
+    <eco-article
+      people="people"
+      schema="schema"></eco-article>
 
   </main>
   
 `;
-
-//    <eco-article></eco-article>
 
 export default
 
@@ -32,15 +35,15 @@ export default
 
           scope: {
 
-            navigation: '='
+            navigation: '=',
+            people: '=',
+            schema: '='
 
           },
 
           template,
 
-          // link: function ($scope) {
-
-          //   $scope.things = [1, 3];
+          // link ($scope) {
 
           // }
 

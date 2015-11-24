@@ -13,16 +13,19 @@ main {
 
   nav {
 
-    @include span-columns(4);
-
     height: 100%;
+    float: left;
+    width: 240px;
+    box-shadow: inset 0 0 10px black;
 
   }
 
 
   article {
 
-    @include span-columns(8);
+    overflow: scroll;
+    height: 100%;
+    padding: 9px 20px;
 
   }
 
