@@ -59,12 +59,16 @@ export default
             });
 
 
+            function getParent () {
+
+              return element.parent();
+
+            }
+
+
             function getFormHeight () {
 
-              const parent = element.parent();
-              const form = parent.find('form');
-
-              return form.height() + 10;
+              return getParent().find('form').height() + 10;
 
             }
 
@@ -76,21 +80,26 @@ export default
             }
 
 
+            function getDiv () {
+
+              return getParent().find('div');
+
+            }
+
+
             function calculateHeight () {
 
               setTimeout(function () {
                 
                 const parent = element.parent();
-                const div = parent.find('div');
+                const article = element.parent().parent().parent();
 
                 const height = getFormHeight();
                 const totalHeight = getTotalHeight();
                 
-                div.css({
+                getDiv().css({
                   height: totalHeight
                 });
-
-                const article = parent.parent().parent();
 
                 article.scroll(function (event) {
                   
@@ -99,7 +108,7 @@ export default
 
                   $scope.$apply(function () {
                     
-                    div.css({
+                    getDiv().css({
                       marginTop: height * index,
                       height: totalHeight - (height * index)
                     });
