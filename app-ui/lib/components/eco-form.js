@@ -59,23 +59,33 @@ export default
             });
 
 
+            function getFormHeight () {
+
+              const parent = element.parent();
+              const form = parent.find('form');
+
+              return form.height() + 10;
+
+            }
+
+
+            function getTotalHeight () {
+
+              return $scope.people.length * getFormHeight();
+
+            }
+
+
             function calculateHeight () {
 
               setTimeout(function () {
                 
                 const parent = element.parent();
                 const div = parent.find('div');
-                const form = parent.find('form');
 
-
-                if (!form) {
-                  return calculateHeight();
-                }
-
-                const height = form.height() + 10;
-                const totalHeight = $scope.people.length * height;
-                console.log(parent.height());
-                // const el = $('<div></div>');
+                const height = getFormHeight();
+                const totalHeight = getTotalHeight();
+                
                 div.css({
                   height: totalHeight
                 });
