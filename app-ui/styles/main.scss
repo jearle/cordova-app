@@ -1,0 +1,30 @@
+
+
+main {
+
+
+  @include outer-container;
+
+
+  max-width: 100%;
+  height: 100%;
+  padding-top: 64px;
+
+
+  nav {
+
+    @include span-columns(4);
+
+    height: 100%;
+
+  }
+
+
+  article {
+
+    @include span-columns(8);
+
+  }
+
+
+}

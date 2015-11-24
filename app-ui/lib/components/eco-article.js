@@ -3,21 +3,16 @@
 import app from '../app';
 
 
+import './eco-nav';
+
+
 const template = `
 
-  <header>
+  <article>
 
-    <a href="#open">
+    an article
 
-      | | |
-
-    </a>
-
-    <h1>
-      {{title}}
-    </h1>
-
-  </header>
+  </article>
   
 `;
 
@@ -25,7 +20,7 @@ const template = `
 export default
 
   app
-    .directive('ecoHeader', [
+    .directive('ecoArticle', [
 
       function () {
 
@@ -37,7 +32,7 @@ export default
 
           link: function ($scope) {
 
-            $scope.title = 'cordova';
+            // $scope.title = 'Eco SYS';
 
           }
 

@@ -2,9 +2,15 @@
 
 header {
 
+
   @include outer-container;
 
+  
+  position: fixed;  
+  max-width: 100%;
   background: rgba(35, 105, 105, 1);
+  width: 100%;
+
 
   a, h1 {
 

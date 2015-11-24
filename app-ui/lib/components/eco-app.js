@@ -4,11 +4,13 @@ import app from '../app';
 
 
 import './eco-header';
+import './eco-main';
 
 
 const template = `
 
   <eco-header></eco-header>
+  <eco-main navigation="navigation"></eco-main>
 
 `;
 
@@ -24,12 +26,11 @@ export default (store) =>
 
           template,
 
-          // link: function ($scope) {
+          link ($scope) {
 
-          //   console.log(store);
-          //   $scope.title = 'My Title';
+            $scope.navigation = store.navigation;
 
-          // }
+          }
 
         };
 
