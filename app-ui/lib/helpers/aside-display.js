@@ -30,6 +30,7 @@ class AsideDisplay {
     the default scope values of isAsideClosed and isAsideOpne to false.
   
   */
+  
   resetAside () {
 
     this.$scope.$apply(() => {
@@ -49,6 +50,7 @@ class AsideDisplay {
     sub 728px is the hardcoded value for a mobile browser.
 
   */
+  
   toggleAside () {
 
     if ($(window).width() > 728) {
