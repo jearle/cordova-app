@@ -1,4 +1,9 @@
 
+/*
+
+  Converts a dash cased string to camelcase
+
+*/
 
 export default (s) =>
   

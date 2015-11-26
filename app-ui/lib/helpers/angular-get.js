@@ -1,14 +1,22 @@
 
 
+/*
+  
+  Modules defaults to the use of the ng module.  This may be problematic if you
+  need to use providers like $location which requires the application to have
+  been bootstrapped.
+
+*/
+
 let injector = angular.injector(['ng']);
 
 
-function injectorGet (providerName) {
+/*
+  
+  Exposes a setter to allow the setting of the injector specific to the bootstrap
+  angular app for instance.
 
-  return injector.get(providerName);
-
-}
-
+*/
 
 export function setInjector ($injector) {
 
@@ -17,4 +25,14 @@ export function setInjector ($injector) {
 }
 
 
-export default injectorGet;
+/*
+  
+    Retrieves the service by provider name from the current injector instance.
+
+*/
+
+export default function injectorGet (providerName) {
+
+  return injector.get(providerName);
+
+}
