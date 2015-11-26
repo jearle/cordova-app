@@ -3,6 +3,7 @@ import express from 'express';
 import liveReload from 'connect-livereload';
 import path from 'path';
 import fs from 'fs';
+import app from '../../app-server';
 
 const publicPath = path.join(__dirname, '..');
 
@@ -13,6 +14,8 @@ export default () =>
     .use(liveReload())
 
     .use(express.static(publicPath))
+
+    .use('/api', app)
 
     .get('/prod', (req, res) => 
         res.send(fs.readFileSync('./index.html', 'utf8').replace('.dev.', '.prod.')))

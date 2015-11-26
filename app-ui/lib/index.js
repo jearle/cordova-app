@@ -1,57 +1,18 @@
 
 
-import Chance from 'chance';
-
-
 import '../shims/window';
 import './app';
+import { setInjector } from './helpers/angular-get';
+import getPeople from './services/people';
+import getOtherPeople from './services/people';
+import getNavigation from './services/navigation';
+import getSchemas from './services/schemas';
 
 
-import ecoApp from './components/eco-app';
+import jseApp from './components/jse-app';
 
 
-const chance = Chance();
-
-
-const people = [];
-
-
-for (let i = 0 ; i <  20 ; i++) {
-  
-  people.push({
-
-    name: chance.name(),
-    email: chance.email(),
-    phone: chance.phone()
-
-  });
-
-}
-
-
-ecoApp({
-
-  navigation: [
-
-    { store: 'people', title: 'People' }
-
-  ],
-
-  schema: {
-    
-    people: [
-      
-      'name',
-      'email',
-      'phone'
-
-    ]
-
-  },
-
-  people,
-
-});
+jseApp({ prop: 'key' });
 
 
 const element = $(`
@@ -63,5 +24,8 @@ $('body')
   .append(element);
 
 
-angular
+const $injector = angular
   .bootstrap(element, ['ecosys']);
+
+
+setInjector($injector);

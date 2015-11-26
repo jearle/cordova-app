@@ -1,15 +1,15 @@
 
-import { expect } from 'chai';
+// import { expect } from 'chai';
 
-import main from 'index';
+// import main from 'index';
 
-describe('suite', () => {
+// describe('suite', () => {
 
-  it('should', () => {
+//   // it('should', () => {
 
-    expect(main()).to.equal('BUNG!');
-    expect(2).to.equal(2);
+//   //   expect(main()).to.equal('BUNG!');
+//   //   expect(2).to.equal(2);
 
-  });
+//   // });
 
-});
+// });

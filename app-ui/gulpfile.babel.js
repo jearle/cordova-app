@@ -30,7 +30,7 @@ gulp.task('sass', sass);
 gulp.task('babel', babel);
 gulp.task('browserify', browserify);
 gulp.task('browserify-test', browserifyTest);
-gulp.task('test', () => {} /*test*/); //noop
+gulp.task('test', () => {} /*test*/);
 gulp.task('lint', lint);
 gulp.task('compress', ['browserify'], compress);
 gulp.task('watch', watch);

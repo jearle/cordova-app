@@ -3,16 +3,83 @@
 @import "bourbon/bourbon";
 @import "base/base";
 @import "neat/neat";
-@import "header";
-@import "nav";
-@import "main";
 
-html, body {
+
+html, body, main {
 
   height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
 
 }
 
-body {
-  margin: 0;
+
+aside, article {
+
+  header {
+    
+    min-height: 50px;
+
+  }
+
+}
+
+
+header {
+
+  text-align: right;
+
+}
+
+
+
+aside {
+
+  background: #ccc;
+  min-width: 240px;
+  transition: margin-left .2s;
+  box-shadow: inset -10px 0px 10px -10px;
+
+
+  &.closed {
+
+    margin-left: -240px;
+
+  }
+
+
+  header {
+    background: red;
+  }
+
+
+  @media (max-width: 728px) {
+
+    margin-left: -240px;
+
+    &.open {
+
+      margin-left: 0px;
+
+    }
+
+  }
+
+
+}
+
+
+article {
+
+  background: #999;
+  width: 100%;
+
+
+  header {
+    background: red + 100;
+  }
+
+
 }
