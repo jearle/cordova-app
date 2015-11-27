@@ -14,12 +14,18 @@
 class AsideDisplay {
 
 
-  constructor ($scope, $location) {
+  constructor ($scope, $location, options) {
     
     this.$scope = $scope;
     this.$location = $location;
 
-    $(window).resize(this.resetAside.bind(this));
+    if (!options.element)
+      throw `AsideDisplay requires an options.element got options: ${JSON.stringify(options)}`;
+
+    this.element = options.element;
+    this.mobileWidth = options.mobileWidth || 728;
+
+    this.element.resize(this.reset.bind(this));
 
   }
 
@@ -30,11 +36,11 @@ class AsideDisplay {
     the default scope values of isAsideClosed and isAsideOpne to false.
   
   */
-  
-  resetAside () {
+
+  reset () {
 
     this.$scope.$apply(() => {
-
+      
       this.clearSearchParams(['aside-closed', 'aside-open']);
       this.$scope.isAsideClosed = false;
       this.$scope.isAsideOpen = false;
@@ -50,10 +56,10 @@ class AsideDisplay {
     sub 728px is the hardcoded value for a mobile browser.
 
   */
-  
+
   toggleAside () {
 
-    if ($(window).width() > 728) {
+    if (this.element.width() > this.mobileWidth) {
 
       this.toggleIsAsideClosed();
       this.toggleAsideClosedSearchParam();
@@ -171,10 +177,14 @@ class AsideDisplay {
   Binds and exposes the toggle aside method of the AsideDipslay class.
 
 */
-export default function asideDisplayHelper ($scope, $location)  {
+export default function asideDisplayHelper ($scope, $location, options)  {
 
-  const asideDisplay = new AsideDisplay($scope, $location);
+  const asideDisplay = new AsideDisplay($scope, $location, options);
 
-  return asideDisplay.toggleAside.bind(asideDisplay);
+  const toggleAside = asideDisplay.toggleAside.bind(asideDisplay);
+
+  toggleAside.reset = asideDisplay.reset.bind(asideDisplay);
+
+  return toggleAside;
 
 }

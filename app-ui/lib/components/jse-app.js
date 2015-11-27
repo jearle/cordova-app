@@ -40,7 +40,12 @@ const link = (store, $location) => ($scope) => {
   $scope.isAsideOpen = !!$location.search()['aside-open'];
 
   // console.log(asideDisplayHelper($scope, $location));
-  $scope.menuButtonClicked = asideDisplayHelper($scope, $location);
+  $scope.menuButtonClicked = asideDisplayHelper($scope, $location, {
+
+    element: $(window),
+    mobileWidth: 728
+
+  });
 
 
   
