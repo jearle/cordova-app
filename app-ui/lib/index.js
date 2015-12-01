@@ -2,9 +2,13 @@
 
 import '../shims/window';
 import './app';
+
+
 import { setInjector } from './helpers/angular-get';
+
+
 import getPeople from './services/people';
-import getOtherPeople from './services/people';
+import getOtherPeople from './services/other-people';
 import getNavigation from './services/navigation';
 import getSchemas from './services/schemas';
 
@@ -12,7 +16,14 @@ import getSchemas from './services/schemas';
 import jseApp from './components/jse-app';
 
 
-jseApp({ prop: 'key' });
+jseApp({
+
+  people: getPeople,
+  otherPeople: getOtherPeople,
+  navigation: getNavigation,
+  schemas: getSchemas
+
+});
 
 
 const element = $(`

@@ -18,14 +18,30 @@ class AsideDisplay {
     
     this.$scope = $scope;
     this.$location = $location;
-
-    if (!options.element)
-      throw `AsideDisplay requires an options.element got options: ${JSON.stringify(options)}`;
+    this.checkOptions(options);
 
     this.element = options.element;
     this.mobileWidth = options.mobileWidth || 728;
 
     this.element.resize(this.reset.bind(this));
+
+  }
+
+
+  /*
+
+    Ensures that the options object has an elemenet attribute.
+    Throws an error if not.
+    
+  */
+
+  checkOptions (options) {
+
+    if (!options.element) {
+
+      throw `AsideDisplay requires an options.element got options: ${JSON.stringify(options)}`;
+
+    }
 
   }
 
@@ -141,7 +157,15 @@ class AsideDisplay {
 
     const search = this.$location.search();
 
-    search[name] ? delete search[name] : search[name] = true;
+    if (search[name]) {
+
+      delete search[name];
+
+    } else {
+
+      search[name] = true;
+
+    }
 
     this.$location.search(search);
 
@@ -177,6 +201,7 @@ class AsideDisplay {
   Binds and exposes the toggle aside method of the AsideDipslay class.
 
 */
+
 export default function asideDisplayHelper ($scope, $location, options)  {
 
   const asideDisplay = new AsideDisplay($scope, $location, options);

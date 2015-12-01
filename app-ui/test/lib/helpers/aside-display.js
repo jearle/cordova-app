@@ -13,7 +13,7 @@ function getWidthedElement (width) {
   element
     .css('width', width);
 
-  return element
+  return element;
 
 }
 
@@ -38,8 +38,11 @@ function getLocationMock (searchParams) {
 
     search (params) {
 
-      if (params)
+      if (params) {
+      
         Object.assign(searchParams, params);
+
+      }
 
       return searchParams;
 
@@ -169,7 +172,7 @@ function toggleDesktopAside () {
 }
 
 
-describe.only('asideDisplay', function () {
+describe('asideDisplay', function () {
 
 
   describe('mobile', function () {

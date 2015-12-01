@@ -15,10 +15,14 @@ const template = `
 
       <ul>
 
-        <li>
+        <li ng-repeat="item in navigation">
 
-          <a href="#/people">
-            People
+          <a 
+            href="#/{{ item.name }}"
+            ng-click="navItemClicked({item: item})">
+
+            {{ item.title }}
+            
           </a>
 
         </li>
@@ -32,10 +36,15 @@ const template = `
 `;
 
 
-const link = () => ($scope) => {
-  
-  $scope.$watch('closed', () =>
-    console.log($scope.closed));
+const link = () => $scope => {
+
+
+  // $scope.linkClicked = function (item) {
+    
+  //   $scope.navItemClicked({item: item});
+
+  // };
+
 
 };
 
@@ -43,8 +52,12 @@ const link = () => ($scope) => {
 const config = () => () => ({
   
   scope: {
+    
     closed: '=',
-    open: '='
+    open: '=',
+    navigation: '=',
+    navItemClicked: '&'
+
   },
 
   replace: true,
