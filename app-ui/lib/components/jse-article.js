@@ -150,7 +150,7 @@ const link = () => ($scope, element) => {
 
   $scope.$watch('people', _ => {
   
-    $scope.peopleToDisplay = $scope.people.slice(0, 50);
+    $scope.peopleToDisplay = peopleSlice();
     hookUpScrollEvent(getScrollElement());
 
 
@@ -159,14 +159,11 @@ const link = () => ($scope, element) => {
 
   $scope.sortClicked = function (field) {
 
-    $scope.people.sort(function (x, y) {
-      return x[field].localeCompare(y[field]);
-    });
+    sortPeople($scope.people, field);
 
     const index = getIndex(getScrollElement());
-    console.log(index);
 
-    $scope.peopleToDisplay = $scope.people.slice(0 + index, 50 + index);
+    $scope.peopleToDisplay = peopleSlice(index);
 
   };
 
@@ -174,22 +171,67 @@ const link = () => ($scope, element) => {
   $scope.viewClicked = view =>
 
     $scope.view = view;
+
+
+  function sortPeople (people, field) {
+
+    return people.sort((person, nextPerson) => 
+      person[field].localeCompare(nextPerson[field]));
+
+  }
+
+
+  function peopleSlice (index) {
+
+    if (!index) {
+
+      index = 0;
+
+    }
+
+    return $scope.people.slice(0 + index, 110 + index);
+
+  }
   
 
   function hookUpScrollEvent (scrollElement) {
 
     scrollElement
       .unbind('scroll')
-      .scroll(() => {
+      .scroll(onScroll(scrollElement));
 
-        const firstChildHeight = getFirstChildHeight(scrollElement);
-        const index = getIndex(scrollElement);
+  }
 
-        $scope.peopleToDisplay = $scope.people.slice(0 + index, 50 + index);
-        $($(scrollElement).children()[0]).css({'margin-top': (index * firstChildHeight) + 'px' })
-        $scope.$apply();
 
-      });
+  function onScroll (scrollElement) {
+
+    return () =>
+      reRenderView(scrollElement);
+
+  }
+
+
+  function reRenderView (scrollElement) {
+
+    $scope.peopleToDisplay = peopleSlice(getIndex(scrollElement));
+    
+    getListContainer(scrollElement)
+      .css(getMarginCss(scrollElement));
+
+    $scope.$apply();
+
+  }
+
+
+  function getMarginCss (scrollElement) {
+
+    const firstChildHeight = getFirstChildHeight(scrollElement);
+
+    return {
+      
+      'margin-top': getIndex(scrollElement) * firstChildHeight
+
+    };
 
   }
 
@@ -222,6 +264,13 @@ const link = () => ($scope, element) => {
   function getScrollElement () {
 
     return $('.' + $scope.view, element);
+
+  }
+
+
+  function getListContainer (scrollElement) {
+
+    return $($(scrollElement).children()[0]);
 
   }
 
