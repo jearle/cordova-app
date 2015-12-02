@@ -109,7 +109,8 @@ const template = `
     </section>
 
 
-    <section 
+    <section
+      class="form"
       ng-if="view == 'form'">
       
       <ul>
@@ -145,16 +146,11 @@ const template = `
 const link = () => ($scope, element) => {
 
 
-  $scope.view = 'list';
+  $scope.view = 'form';
 
 
-  $scope.$watch('people', _ => {
-  
-    $scope.peopleToDisplay = peopleSlice();
-    hookUpScrollEvent(getScrollElement());
-
-
-  });
+  $scope.$watch('people', watcher);
+  $scope.$watch('view', watcher);
 
 
   $scope.sortClicked = function (field) {
@@ -171,6 +167,14 @@ const link = () => ($scope, element) => {
   $scope.viewClicked = view =>
 
     $scope.view = view;
+
+
+  function watcher () {
+
+    $scope.peopleToDisplay = peopleSlice();
+    hookUpScrollEvent(getScrollElement());
+
+  }
 
 
   function sortPeople (people, field) {
@@ -252,11 +256,7 @@ const link = () => ($scope, element) => {
 
   function getFirstChildInScrollView (scrollElement) {
 
-    if ($scope.view === 'list') {
-      
-      return $(scrollElement.find('li')[0]);
-
-    }
+    return $(scrollElement.find('li')[0]);
 
   }
 
