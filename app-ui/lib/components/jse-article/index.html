@@ -1,0 +1,135 @@
+
+<article>
+
+
+  <header>
+    
+    <button ng-click="menuButtonClicked()">
+
+      hide
+
+    </button>
+
+  </header>
+
+
+  <section ng-if="people.length == 0">
+
+    Please select a set of people.
+
+  </section>
+
+
+  <section>
+
+    <p>
+
+      view with 
+
+    </p>
+
+    <button
+      ng-click="viewClicked('list')">
+
+      list
+
+    </button>
+
+    <button
+      ng-click="viewClicked('form')">
+
+      forms
+
+    </button>
+
+  </section>
+
+
+  <section>
+
+    <p>
+
+      sort by
+
+    </p>
+
+    <ul
+      class="schema">
+
+      <li
+        class="field"
+        ng-repeat="field in schema">
+
+        <button
+          ng-click="sortClicked(field)">
+
+          {{ field }}
+
+        </button>
+
+      </li>
+
+    </ul>
+
+  </section>
+
+
+  <section 
+    class="list"
+    ng-if="view == 'list'">
+    
+    <ul>
+
+      <li 
+        ng-repeat="person in peopleToDisplay">
+
+        <ul
+          class="schema">
+
+          <li
+            class="field" 
+            ng-repeat="field in schema">
+
+            {{ person[field] }}
+
+          </li>
+
+        </ul>
+
+      </li>
+
+    </ul>
+
+  </section>
+
+
+  <section
+    class="form"
+    ng-if="view == 'form'">
+    
+    <ul>
+
+      <li ng-repeat="person in peopleToDisplay">
+
+        <form>
+
+          <label
+            class="field" 
+            ng-repeat="field in schema">
+
+            {{ field }}
+
+            <input ng-model="person[field]" />
+
+          </label>
+
+        </form>
+
+      </li>
+
+    </ul>
+
+  </section>
+
+
+</article>

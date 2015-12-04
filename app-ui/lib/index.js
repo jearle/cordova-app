@@ -1,7 +1,7 @@
 
 
 import '../shims/window';
-import './app';
+import app from './app';
 
 
 import { setInjector } from './helpers/angular-get';
@@ -16,7 +16,7 @@ import getSchemas from './services/schemas';
 import jseApp from './components/jse-app';
 
 
-jseApp({
+jseApp(app, {
 
   people: getPeople,
   otherPeople: getOtherPeople,

@@ -1,44 +1,14 @@
 
 
-import app from '../app';
+import aside from '../jse-aside';
+import article from '../jse-article';
 
 
-import aside from './jse-aside';
-import article from './jse-article';
+import asideDisplayHelper from '../../helpers/aside-display';
+import dashToCamel from '../../helpers/dash-to-camel.js';
 
 
-import asideDisplayHelper from '../helpers/aside-display';
-import dashToCamel from '../helpers/dash-to-camel.js';
-
-
-aside();
-article();
-
-
-const template = `
-
-
-  <main>
-
-
-    <jse-aside
-      closed="isAsideClosed"
-      open="isAsideOpen"
-      navigation="navigation"
-      nav-item-clicked="navItemClicked(item)">
-    </jse-aside>
-
-    
-    <jse-article
-      menu-button-clicked="menuButtonClicked()"
-      people="people"
-      schema="schema"></jse-article>
-
-
-  </main>
-
-
-`;
+const template = require('fs').readFileSync(__dirname + '/index.html', 'utf8');
 
 
 const link = (store, $location) => ($scope) => {
@@ -141,9 +111,16 @@ const config = (store) => ($location) => ({
 });
 
 
-export default (store) => app.directive('ecoApp', [ 
-  
-  '$location', 
-  config(store) 
+export default (app, store) => {
 
-]);
+  aside(app);
+  article(app);
+
+  app.directive('ecoApp', [ 
+  
+    '$location', 
+    config(store) 
+
+  ]);
+
+};
