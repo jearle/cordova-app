@@ -5,6 +5,7 @@ import createScrollView from '../../helpers/scrollview';
 
 const template = require('fs').readFileSync(__dirname + '/index.html', 'utf8');
 
+
 const link = $timeout => ($scope, element) => {
 
 
@@ -13,25 +14,9 @@ const link = $timeout => ($scope, element) => {
 
   $scope.view = 'list';
 
-
-  $scope.$watch('people', watcher);
-  $scope.$watch('view', watcher);
-
-
-  function watcher () {
-
-    const scrollElement = $('.' + $scope.view, element);
-
-    scrollView = createScrollView(
-      
-      scrollElement, 
-      $scope.people,
-
-      (people) => 
-        $timeout(() =>
-          $scope.peopleToDisplay = people));
-
-  }
+  [ 'people', 
+    'view' ]
+    .forEach((property) => $scope.$watch(property, watcher));
 
 
   $scope.sortClicked = function (field) {
@@ -53,6 +38,22 @@ const link = $timeout => ($scope, element) => {
 
     return people.sort((person, nextPerson) => 
       person[field].localeCompare(nextPerson[field]));
+
+  }
+
+
+  function watcher () {
+
+    const scrollElement = $('.' + $scope.view, element);
+
+    scrollView = createScrollView(
+      
+      scrollElement, 
+      $scope.people,
+
+      (people) => 
+        $timeout(() =>
+          $scope.peopleToDisplay = people));
 
   }
 

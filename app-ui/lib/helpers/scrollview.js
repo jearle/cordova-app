@@ -24,7 +24,7 @@ class ScrollView {
 
 
   update () {
-    
+    console.log('called');
     this.updateMargin();
     this.callback(this.getDataSlice());
 
