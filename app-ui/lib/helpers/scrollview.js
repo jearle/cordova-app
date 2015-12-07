@@ -24,7 +24,7 @@ class ScrollView {
 
 
   update () {
-    console.log('called');
+
     this.updateMargin();
     this.callback(this.getDataSlice());
 
@@ -91,7 +91,7 @@ class ScrollView {
 
 
   getTopMargin () {
-
+    
     return {
       'margin-top': this.getIndex() * this.getChildHeight()
     };
