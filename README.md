@@ -10,6 +10,11 @@ A skeleton for creating a cordova application using SASS, Angular 1, and Express
   + [Browser Platform](#browser-platform)
   + [iOS Platform](#ios-platform)
 + [Development](#development)
++ [Application Structure](#application-structure)
+  + [App](#app)
+  + [App Server](#app-server)
+  + [App UI](#app-ui)
++ [Understanding the Scroll View](#understanding-the-scroll-view)
 
 ## Quickstart
 
@@ -141,7 +146,7 @@ The services are specifically API services used to hit the `app-server` endpoint
 
 The `test/` folder mirrors the lib folder, as well as adds a top level `helpers` folder.  This folder contains shared functions for things such as creating mocks.
 
-## Understanding the Scroll View.
+## Understanding the Scroll View
 
 The scrollview helper located in the `lib/helpers/scrollview.js` is a helper class used to create scrollable content that has a lot of items.  In this application we use a dataset of 2000 items.
 
