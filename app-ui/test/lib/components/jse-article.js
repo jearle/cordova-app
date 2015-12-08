@@ -9,7 +9,7 @@ import jseArticle from 'components/jse-article';
 import getScope from '../../helpers/get-scope';
 
 
-describe.only('jse-article', function () {
+describe('jse-article', function () {
 
 
   let scope = null;
@@ -20,7 +20,7 @@ describe.only('jse-article', function () {
 
 
   beforeEach(() =>
-    
+
     scope = getScope(
       jseArticle, 
       null, 
