@@ -97,7 +97,7 @@ function waitForScope (scope, operation, callback, count) {
 }
 
 
-describe.only('jse-app', function () {
+describe('jse-app', function () {
 
 
   let scope = null;
