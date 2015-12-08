@@ -7,8 +7,8 @@ A skeleton for creating a cordova application using SASS, Angular 1, and Express
 ## Table of Contents
 
 + [Quickstart](#quickstart)
-+ [Browser Platform](#browser-platform)
-+ [iOS Platform](#ios-platform)
+  + [Browser Platform](#browser-platform)
+  + [iOS Platform](#ios-platform)
 + [Development](#development)
 
 ## Quickstart
