@@ -12,17 +12,22 @@ import getScope from '../../helpers/get-scope';
 import waitForScope from '../../helpers/wait-for-scope';
 
 
+const getNames = () => ['z', 'y', 'x'];
+const getPeople = () => getNames().map((letter) => ({ name: letter }));
+
+
 describe('jse-app', function () {
 
 
   let scope = null;
 
   beforeEach(() =>
-    
+
     scope = getScope(
       jseApp, 
       services(), 
-      [createMockLocationService()]));
+      [createMockLocationService()],
+      { people: getPeople() }));
 
 
   it(`isAsideClosed should be set to false`, () =>
