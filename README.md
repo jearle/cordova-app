@@ -20,27 +20,56 @@ npm install
 
 ## Browser Platform
 
-Change directory to `app/`
+Change directory to the app server, install the dependencies and start the server.
 
 ```bash
-cd app
+cd app-server
+npm install
+node index.js
 ```
 
-Install the browser platform
+Change directory to the app folder.
+
+```bash
+cd ../app
+```
+
+Install the browser platform.
 
 ```bash
 ../node_modules/.bin/cordova platform add browser
 ```
 
-Start the server
+Run the app on the browser platform.
 
 ```bash
-cd ../app-server
+../node_modules/.bin/cordova run browser
+```
+
+## iOS Platform
+
+Change directory to the app server, install the dependencies and start the server.
+
+```bash
+cd app-server
+npm install
 node index.js
 ```
 
-Run the app on the browser platform
+Change directory to the app folder.
 
 ```bash
-../node_modules/.bin/cordova
+cd ../app
+```
+
+Install the iOS platform (note Xcode is required).
+
+```bash
+../node_modules/.bin/cordova platform add ios
+```
+
+Run the app on the browser platform.
+
+```bash
+../node_modules/.bin/cordova run ios
 ```
