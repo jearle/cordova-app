@@ -18,3 +18,29 @@ Install the dependecies
 npm install
 ```
 
+## Browser Platform
+
+Change directory to `app/`
+
+```bash
+cd app
+```
+
+Install the browser platform
+
+```bash
+../node_modules/.bin/cordova platform add browser
+```
+
+Start the server
+
+```bash
+cd ../app-server
+node index.js
+```
+
+Run the app on the browser platform
+
+```bash
+../node_modules/.bin/cordova
+```
