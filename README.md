@@ -19,7 +19,7 @@ Clone the repo
 git clone git@github.com:jearle/cordova-app.git
 ```
 
-Install the dependecies
+Install the Cordova dependencies.
 
 ```bash
 npm install
