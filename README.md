@@ -18,7 +18,7 @@ Install the dependecies
 npm install
 ```
 
-## Browser Platform
+### Browser Platform
 
 Change directory to the app server, install the dependencies and start the server.
 
@@ -46,7 +46,7 @@ Run the app on the browser platform.
 ../node_modules/.bin/cordova run browser
 ```
 
-## iOS Platform
+### iOS Platform
 
 Change directory to the app server, install the dependencies and start the server.
 
