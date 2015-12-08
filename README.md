@@ -73,3 +73,27 @@ Run the app on the browser platform.
 ```bash
 ../node_modules/.bin/cordova run ios
 ```
+
+## Development
+
+To develop the application further you will need to work out of the app-ui directory.
+
+```bash
+cd app-ui
+```
+
+Install dependencies.
+
+```bash
+npm install
+```
+
+Start the application.
+
+```bash
+npm start
+```
+
+To run the tests navigation to `http://localhost:3000/test` in your browser.
+
+To view the application navigate to `http://localhost:3000`.
