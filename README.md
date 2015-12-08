@@ -147,4 +147,8 @@ The scrollview helper located in the `lib/helpers/scrollview.js` is a helper cla
 
 When the class is instantiated it determines the height of the first list item within a scrollable element passed to the constructure.
 
-This height is used to determine the current shown element index based on height vs the scroll top distance.  It then slices the full data array into a subsection from the index to the index plus 110.  The number 110 was chosen as it allows the max amount of 18px height elements to be shown on a 2560px height monitor less a the height of the Google Chrome Navigation bar and a 50px page header.  Ideally this number would be calculated based on the height of the scrollable element.
+This height is used to determine the current shown element index based on height vs the scroll top distance.  It then slices the full data array into a subsection from the index to the index plus 110.  The number 110 was chosen as it allows the max amount of 18px height elements to be shown on a 2560px height monitor less the height of the Google Chrome Navigation bar and a 50px page header.  Ideally this number would be calculated based on the height of the scrollable element, and would update on window resize.
+
+The top margin of the unordered list element is set to the scroll top distance upon index shifts when scrolled.
+
+A passed in on scroll function is called upon whole index shifts passing the data subsection to the function.  It is up to instantiator of the scrollview to properly rendor the subsection of data.
