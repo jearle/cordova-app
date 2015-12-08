@@ -7,27 +7,17 @@ import app from './app';
 import { setInjector } from './helpers/angular-get';
 
 
-import getPeople from './services/people';
-import getOtherPeople from './services/other-people';
-import getNavigation from './services/navigation';
-import getSchemas from './services/schemas';
+import services from './services';
 
 
 import jseApp from './components/jse-app';
 
 
-jseApp(app, {
-
-  people: getPeople,
-  otherPeople: getOtherPeople,
-  navigation: getNavigation,
-  schemas: getSchemas
-
-});
+jseApp(app, services());
 
 
 const element = $(`
-  <eco-app></eco-app>
+  <jse-app></jse-app>
 `);
 
 

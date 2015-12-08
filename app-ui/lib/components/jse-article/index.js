@@ -6,7 +6,7 @@ import createScrollView from '../../helpers/scrollview';
 const template = require('fs').readFileSync(__dirname + '/index.html', 'utf8');
 
 
-const link = $timeout => ($scope, element) => {
+const link = () => ($scope, element) => {
 
 
   let scrollView;
@@ -46,21 +46,40 @@ const link = $timeout => ($scope, element) => {
 
     const scrollElement = $('.' + $scope.view, element);
 
+    // Used to determine whether or not this is the
+    // initial firing of the watcher.  Wrapping the
+    // peopleToDisplay setter in a safe apply ($timeout)
+    // results in a slower rendering causing frame
+    // lag in the browser.
+    let isInit = true;
+
     scrollView = createScrollView(
       
       scrollElement, 
       $scope.people,
 
-      (people) => 
-        $timeout(() =>
-          $scope.peopleToDisplay = people));
+      (people) => {
+
+        $scope.peopleToDisplay = people;
+
+        if (!isInit) {
+
+          $scope.$apply();
+
+        } else {
+
+          isInit = false;
+
+        }
+
+      });
 
   }
 
 };
 
 
-const config = () => ($timeout) => ({
+const config = () => () => ({
   
   scope: {
 
@@ -72,10 +91,10 @@ const config = () => ($timeout) => ({
 
   replace: true,
   template,
-  link: link($timeout)
+  link: link()
 
 });
 
 
 export default app => 
-  app.directive('jseArticle', [ '$timeout', config() ]);
+  app.directive('jseArticle', [ config() ]);

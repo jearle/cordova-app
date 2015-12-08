@@ -8,6 +8,7 @@ export default () =>
 
   browserify(glob.sync('./test/**/*.js'), { paths: ['./lib'], debug: true })
     .transform(['babelify'])
+    .transform(['brfs'])
     .exclude('../shims/window')
     .require('./shims/browser-window', { expose: '../shims/window' })
     .bundle()

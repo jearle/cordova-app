@@ -116,7 +116,7 @@ export default (app, store) => {
   aside(app);
   article(app);
 
-  app.directive('ecoApp', [ 
+  app.directive('jseApp', [ 
   
     '$location', 
     config(store) 
