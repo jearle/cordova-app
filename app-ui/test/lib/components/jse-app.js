@@ -7,94 +7,9 @@ import jseApp from 'components/jse-app';
 import services from 'services';
 
 
-function createApp (services) {
-
-  return {
-
-    scope: {
-      
-      $watch () {},
-
-      $apply: callback => callback()
-
-    },
-
-    directive (name, directiveArr) {
-      
-      const config = directiveArr[directiveArr.length - 1];
-      const link = config.apply(this, services).link;
-
-      link(this.scope);
-
-    }
-
-  };
-
-}
-
-
-function createMockLocationService () {
-
-  return {
-
-    search () {
-
-      return {};
-
-    },
-
-    path () {
-      
-      return '';
-      
-    }
-
-  };
-
-}
-
-
-function getScope (component, store, services) {
-
-  const location = createMockLocationService();
-  const app = createApp(services);
-  const scope = app.scope;
-
-  component(app, store);
-
-  return scope;
-
-}
-
-
-function waitForScope (scope, operation, callback, count) {
-
-  if (!count) {
-
-    count = 0;
-
-  }
-
-  expect(count += 1).to.not.equal(10);
-
-
-  setTimeout(() => {
-
-    if (scope.people.length === 0) {
-      
-      waitForScope(scope, null, callback, count);
-
-    } else {
-
-      callback();
-      
-
-    }
-
-  }, 10);
-
-
-}
+import createMockLocationService from '../../helpers/create-mock-location-service';
+import getScope from '../../helpers/get-scope';
+import waitForScope from '../../helpers/wait-for-scope';
 
 
 describe('jse-app', function () {
@@ -103,6 +18,7 @@ describe('jse-app', function () {
   let scope = null;
 
   beforeEach(() =>
+    
     scope = getScope(
       jseApp, 
       services(), 

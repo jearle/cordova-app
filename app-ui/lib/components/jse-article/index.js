@@ -8,9 +8,7 @@ const template = require('fs').readFileSync(__dirname + '/index.html', 'utf8');
 
 const link = () => ($scope, element) => {
 
-
   let scrollView;
-
 
   $scope.view = 'list';
 
@@ -42,37 +40,36 @@ const link = () => ($scope, element) => {
   }
 
 
+  function onScroll (isInit) {
+
+    return (people) => {
+  
+      $scope.peopleToDisplay = people;
+  
+      if (!isInit) {
+  
+        $scope.$apply();
+  
+      } else {
+  
+        isInit = false;
+  
+      }
+  
+    };
+
+  }
+
+
   function watcher () {
 
     const scrollElement = $('.' + $scope.view, element);
-
-    // Used to determine whether or not this is the
-    // initial firing of the watcher.  Wrapping the
-    // peopleToDisplay setter in a safe apply ($timeout)
-    // results in a slower rendering causing frame
-    // lag in the browser.
-    let isInit = true;
 
     scrollView = createScrollView(
       
       scrollElement, 
       $scope.people,
-
-      (people) => {
-
-        $scope.peopleToDisplay = people;
-
-        if (!isInit) {
-
-          $scope.$apply();
-
-        } else {
-
-          isInit = false;
-
-        }
-
-      });
+      onScroll(true));
 
   }
 
