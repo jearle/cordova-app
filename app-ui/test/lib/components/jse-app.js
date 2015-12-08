@@ -25,7 +25,7 @@ describe('jse-app', function () {
 
     scope = getScope(
       jseApp, 
-      services(), 
+      services('http://localhost:3001'), 
       [createMockLocationService()],
       { people: getPeople() }));
 

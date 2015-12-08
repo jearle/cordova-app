@@ -15,7 +15,7 @@ export default () =>
 
     .use(express.static(publicPath))
 
-    .use('/api', app)
+    // .use('/api', app)
 
     .get('/prod', (req, res) => 
         res.send(fs.readFileSync('./index.html', 'utf8').replace('.dev.', '.prod.')))

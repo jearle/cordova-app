@@ -13,7 +13,7 @@ import services from './services';
 import jseApp from './components/jse-app';
 
 
-jseApp(app, services());
+jseApp(app, services('http://localhost:3001'));
 
 
 const element = $(`

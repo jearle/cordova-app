@@ -46,6 +46,14 @@ var schemas = {
 
 };
 
+app.all('*', function(req, res, next) {
+  
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+
+});
+
 
 app.get('/people', function (req, res) {
 
@@ -76,5 +84,5 @@ app.get('/schemas', function (req, res) {
 
 
 module.exports = app;
-// app.listen(3001);
-// console.log('listening on http://localhost:3001');
+app.listen(3001);
+console.log('listening on http://localhost:3001');

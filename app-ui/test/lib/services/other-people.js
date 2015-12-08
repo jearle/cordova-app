@@ -10,7 +10,7 @@ describe('getOtherPeople', function () {
 
   
   it(`should return 2000 people`, () => 
-    getOtherPeople()
+    getOtherPeople('http://localhost:3001')()
       .then((people) => expect(people).to.have.length(2000)));
 
 

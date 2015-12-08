@@ -2,6 +2,6 @@
 
 const $http = angular.injector(['ng']).get('$http');
 
-export default () => $http
-  .get('/api/navigation')
+export default base => () => $http
+  .get(`${base}/navigation`)
   .then((res) => res.data);

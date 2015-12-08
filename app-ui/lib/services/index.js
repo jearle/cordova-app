@@ -6,11 +6,11 @@ import navigation from './navigation';
 import schemas from './schemas';
 
 
-export default () => ({
+export default (base) => ({
 
-  people,
-  otherPeople,
-  navigation,
-  schemas
+  people: people(base),
+  otherPeople: otherPeople(base),
+  navigation: navigation(base),
+  schemas: schemas(base)
 
 });

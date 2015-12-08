@@ -10,12 +10,12 @@ describe('getSchemas', function () {
 
   
   it(`should have property people`, () => 
-    getSchemas()
+    getSchemas('http://localhost:3001')()
       .then((schemas) => expect(schemas).to.have.property('people')));
 
 
   it(`should have property otherPeople`, () => 
-    getSchemas()
+    getSchemas('http://localhost:3001')()
       .then((schemas) => expect(schemas).to.have.property('otherPeople')));
 
 

@@ -1,0 +1,25 @@
+{
+  "name": "cordova-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "cordova": "^5.4.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ios": "cd app && ../node_modules/.bin/cordova run ios",
+    "browser": "cd app && ../node_modules/.bin/cordova run browser"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jearle/cordova-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jearle/cordova-app/issues"
+  },
+  "homepage": "https://github.com/jearle/cordova-app#readme"
+}
