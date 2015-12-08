@@ -101,6 +101,50 @@ Start the application.
 npm start
 ```
 
-To run the tests navigation to `http://localhost:3000/test` in your browser.
+To run the tests navigate to `http://localhost:3000/test` in your browser.
 
 To view the application navigate to `http://localhost:3000`.
+
+## Application Structure
+
+The application is split up into sub applications, `app`, `app-server` and `app-ui`.
+
+### App
+
+The `app` follows the Cordova structure for documentation go to the cordova website [https://cordova.apache.org/](https://cordova.apache.org/).
+
+### App Server
+
+The `app-server` is an API server that generates 2000 random people, the schemas the people follow and the navigation.
+
+### App UI
+
+The `app-ui` is the heart of the application.  It follows the following tree structure:
+
+```
+lib/
+  components/
+  helpers/
+  services/
+  app.js
+  index.js
+test/
+  helpers/
+  ..mirrors lib..
+```
+
+The components are the visual elements drawn on the page
+
+The helpers are helper functions.
+
+The services are specifically API services used to hit the `app-server` endpoints.
+
+The `test/` folder mirrors the lib folder, as well as adds a top level `helpers` folder.  This folder contains shared functions for things such as creating mocks.
+
+## Understanding the Scroll View.
+
+The scrollview helper located in the `lib/helpers/scrollview.js` is a helper class used to create scrollable content that has a lot of items.  In this application we use a dataset of 2000 items.
+
+When the class is instantiated it determines the height of the first list item within a scrollable element passed to the constructure.
+
+This height is used to determine the current shown element index based on height vs the scroll top distance.  It then slices the full data array into a subsection from the index to the index plus 110.  The number 110 was chosen as it allows the max amount of 18px height elements to be shown on a 2560px height monitor less a the height of the Google Chrome Navigation bar and a 50px page header.  Ideally this number would be calculated based on the height of the scrollable element.
