@@ -4,6 +4,10 @@
 
 A skeleton for creating a cordova application using SASS, Angular 1, and Express.
 
+## Table of Contents
+
+[Quickstart](#quickstart)
+
 ## Quickstart
 
 Clone the repo
